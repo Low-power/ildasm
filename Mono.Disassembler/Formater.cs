@@ -633,7 +633,7 @@ namespace Mono.Disassembler {
 				else
 					sb.Append (Format (type));
 			} else {
-				if (!only_name) {
+				if (!only_name && !(type is GenericParameter)) {
 					sb.Append (type.IsValueType ? "valuetype" : "class");
 					sb.Append (" ");
 				}
