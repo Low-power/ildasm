@@ -227,7 +227,7 @@ namespace Mono.Disassembler {
 		public override void VisitParameterDefinition (ParameterDefinition parameter)
 		{
 			//parameter.ParameterType.Accept (this);
-			m_writer.BaseWriter.Write(Formater.Signature (parameter.ParameterType, true, !NoAlias));
+			m_writer.BaseWriter.Write(Formater.Signature (parameter.ParameterType, false, !NoAlias));
 			//m_writer.Write (" {0}", Formater.Escape (parameter.Name));
 			m_writer.Write(Formater.Escape(parameter.Name));
 		}

@@ -168,7 +168,7 @@ namespace Mono.Disassembler {
 			//method.ReturnType.ReturnType.Accept (m_reflectDis);
 			//FIXME: another visitor for printing names (refs to methoddef/typedef/typeref etc
 			m_writer.Write (Formater.Signature (method.ReturnType.ReturnType, false, !NoAlias));
-			m_writer.Write (method.Name);
+			m_writer.Write (Formater.Escape(method.Name));
 
 			//( params )
 			m_writer.BaseWriter.Write (" (");
@@ -197,8 +197,9 @@ namespace Mono.Disassembler {
 			m_writer.WriteLine ("// Code size {0} (0x{0:x})", body.CodeSize);
 			m_writer.WriteLine (".maxstack {0}", body.MaxStack);
 			if (body.Method.DeclaringType.Module.Assembly.EntryPoint != null &&
-				body.Method.DeclaringType.Module.Assembly.EntryPoint.ToString () == body.Method.ToString ())
+				body.Method.DeclaringType.Module.Assembly.EntryPoint.ToString () == body.Method.ToString ()) {
 				m_writer.WriteLine (".entrypoint");
+			}
 
 			VisitVariableDefinitionCollection (body.Variables);
 			VisitInstructionCollection (body.Instructions);
