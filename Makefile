@@ -1,6 +1,6 @@
 export MONO_PATH = /usr/lib/mono/2.0
 
-MCS = gmcs
+MCS := gmcs
 ASSEMBLIES = -r:Mono.Cecil.dll
 
 all: 
